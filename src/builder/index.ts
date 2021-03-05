@@ -1,17 +1,25 @@
 class Product {
+    name: string
+    quantity: number
+    status: string
+
     constructor(
         name = '',
         quantity = 0,
         status = 'empty'
     ) {
         this.name = name;
-        this.quntity = quantity;
+        this.quantity = quantity;
         this.status = status
     }
 }
 
 
 class AutoBuilder {
+    product: Product | null
+    cargo: number
+    finalPrice: any
+
     constructor() {
         this.product = null;
         this.cargo = 40;
@@ -24,13 +32,15 @@ class AutoBuilder {
     }
 
     buyProduct() {
-        this.finalPrice = this.product.quntity * this.cargo;
+        this.finalPrice = this.product.quantity * this.cargo;
         console.log(this.finalPrice)
     }
 }
 
 
 class Director {
+    builder
+
     constructor(builder) {
         this.builder = builder;
     }
