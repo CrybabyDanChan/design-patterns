@@ -1,23 +1,51 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: "./src/index.ts",
+    context: path.resolve(__dirname, 'src'),
+    entry: ['@babel/polyfill', './index.ts'],
     devServer: {
         contentBase: './dist',
+        hot: true,
     },
-    output: {
-        filename: 'main.ts',
-        path: path.resolve(__dirname, 'dist'),
-    },
-    devtool: "source-map",
-    resolve: {
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
-    },
+    devtool: 'inline-source-map',
     module: {
         rules: [
-            { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.js$/, loader: "source-map-loader" },
+            {
+                test: /\.(ts|js)$/,
+                loader: "ts-loader",
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(ts|js)$/,
+                loader: 'eslint-loader',
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.(ts|js)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env',
+                        "@babel/preset-typescript"
+                    ]
+                }
+            }
         ],
     },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        },
+    },
+    plugins: [new HtmlWebpackPlugin({
+        filename: "index.html",
+    })],
 };

@@ -39,9 +39,9 @@ class AutoBuilder {
 
 
 class Director {
-    builder
+    builder: AutoBuilder;
 
-    constructor(builder) {
+    constructor(builder: AutoBuilder) {
         this.builder = builder;
     }
 

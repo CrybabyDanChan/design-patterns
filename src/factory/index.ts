@@ -1,5 +1,13 @@
+
+
 class AUTO {
-    constructor(model, price, speed) {
+    public name: string;
+
+    constructor(
+        public model: string,
+        public price: number,
+        public speed: number
+    ) {
         this.name = 'no name';
         this.model = model;
         this.price = price;
@@ -11,9 +19,14 @@ class AUTO {
     }
 }
 
-class BMW extends AUTO{
-    constructor() {
-        super();
+class BMW extends AUTO {
+
+    constructor(
+        public model: string,
+        public price: number,
+        public speed: number
+    ) {
+        super(model, price, speed);
         this.name = 'BMW'
     }
 
@@ -23,8 +36,13 @@ class BMW extends AUTO{
 }
 
 class Mercedes extends AUTO{
-    constructor() {
-        super();
+    constructor(
+        public model: string,
+        public price: number,
+        public speed: number
+    ) {
+        super(model, price, speed);
+        this.name = 'Mercedes'
     }
 
     run() {
@@ -34,7 +52,7 @@ class Mercedes extends AUTO{
 
 
 class AUTOFactory {
-    create(name) {
+    create(name: string) {
         if (name === "BMW") {
             return new BMW('x5', 20000000, 300)
         }

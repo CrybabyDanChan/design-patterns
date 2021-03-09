@@ -1,8 +1,8 @@
 class Shape {
-    width;
-    height;
+    width: number;
+    height: number;
 
-    constructor(source) {
+    constructor(source: Shape) {
         if (!source) {
             return;
         }
@@ -16,8 +16,8 @@ class Shape {
     }
 }
 
-class Rect extends Shape{
-    constructor(source) {
+class Rect extends Shape {
+    constructor(source: Rect) {
         super(source)
 
         if (!source) {
