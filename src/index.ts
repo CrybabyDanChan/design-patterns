@@ -74,4 +74,10 @@ const remote = new Remote(tv);
 remote.togglePower();
 remote.channelUp();
 
+// decorator
+import { Application } from './Decorator';
+
+const app = new Application();
+app.dumbUsageExample('data');
+
 
