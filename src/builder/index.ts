@@ -8,9 +8,9 @@ class Product {
         quantity = 0,
         status = 'empty'
     ) {
-        this.name = name;
-        this.quantity = quantity;
-        this.status = status
+      this.name = name;
+      this.quantity = quantity;
+      this.status = status;
     }
 }
 
@@ -21,19 +21,19 @@ class AutoBuilder {
     finalPrice: any
 
     constructor() {
-        this.product = null;
-        this.cargo = 40;
-        this.finalPrice = null;
+      this.product = null;
+      this.cargo = 40;
+      this.finalPrice = null;
     }
 
     setProduct() {
-        const quantity = Math.floor(Math.random())
-        this.product = new Product('auto', quantity, 'initialized')
+      const quantity = Math.floor(Math.random());
+      this.product = new Product('auto', quantity, 'initialized');
     }
 
     buyProduct() {
-        this.finalPrice = this.product.quantity * this.cargo;
-        console.log(this.finalPrice)
+      this.finalPrice = this.product.quantity * this.cargo;
+      console.log(this.finalPrice);
     }
 }
 
@@ -42,13 +42,15 @@ class Director {
     builder: AutoBuilder;
 
     constructor(builder: AutoBuilder) {
-        this.builder = builder;
+      this.builder = builder;
     }
 
     startAutoBuilder() {
-        this.builder.setProduct()
-        this.builder.buyProduct()
+      this.builder.setProduct();
+      this.builder.buyProduct();
     }
 }
+
+export { AutoBuilder, Director };
 
 

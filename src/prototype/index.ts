@@ -3,32 +3,34 @@ class Shape {
     height: number;
 
     constructor(source: Shape) {
-        if (!source) {
-            return;
-        }
+      if (!source) {
+        return;
+      }
 
-        this.width = source.width;
-        this.height = source.height;
+      this.width = source.width;
+      this.height = source.height;
     }
 
     clone() {
-        return new Shape(this)
+      return new Shape(this);
     }
 }
 
 class Rect extends Shape {
-    constructor(source: Rect) {
-        super(source)
+  constructor(source: Rect = null) {
+    super(source);
 
-        if (!source) {
-            return;
-        }
-
-        this.width = source.width;
-        this.height = source.height;
+    if (!source) {
+      return;
     }
 
-    clone() {
-        return new Rect(this)
-    }
+    this.width = source.width;
+    this.height = source.height;
+  }
+
+  clone() {
+    return new Rect(this);
+  }
 }
+
+export { Rect };
