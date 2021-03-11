@@ -1,5 +1,6 @@
 class Counter {
-    static instance
+    static instance: any
+    count: number
 
     constructor() {
       if (Counter.instance) {

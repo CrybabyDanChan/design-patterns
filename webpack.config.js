@@ -6,7 +6,9 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: ['@babel/polyfill', './index.ts'],
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(__dirname, 'src'),
+    watchContentBase: true,
+    port: 3000,
     hot: true,
   },
   devtool: 'inline-source-map',
