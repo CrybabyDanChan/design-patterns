@@ -75,9 +75,18 @@ remote.togglePower();
 remote.channelUp();
 
 // decorator
-import { Application } from './Decorator';
+import { Application } from './decorator';
 
 const app = new Application();
 app.dumbUsageExample('data');
 
+// BEHAVIOR
+
+// Memento
+import { Editor } from './memento';
+
+const editor = new Editor('Hello', 12, 23);
+const snapshot = editor.createSnapshot();
+editor.text = 'goodbye';
+snapshot.restore();
 
