@@ -1,4 +1,4 @@
 # design-patterns
 List of design patterns
 
-![image info](./assets/img.png)
+![image info](src/assets/mindmap.png)

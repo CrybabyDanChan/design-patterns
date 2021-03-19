@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -16,6 +17,16 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|js)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-typescript',
+          ],
+        },
+      },
+      {
+        test: /\.(ts|js)$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -24,17 +35,6 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
       },
-      {
-        test: /\.(ts|js)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            '@babel/preset-env',
-            '@babel/preset-typescript',
-          ],
-        },
-      },
     ],
   },
   output: {
@@ -42,12 +42,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  plugins: [new HtmlWebpackPlugin({
-    filename: 'index.html',
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+    }),
+    new CleanWebpackPlugin()
+  ],
 };

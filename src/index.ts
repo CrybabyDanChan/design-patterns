@@ -1,26 +1,25 @@
-import { AutoFactory } from './factory';
-import { Counter } from './singleton';
-import { AutoBuilder, Director } from './builder';
-import { Rect} from './prototype';
-import { Application } from './decorator';
+import { AutoFactory } from "./patterns/factory";
+import { Counter } from './patterns/singleton';
+import { AutoBuilder, Director } from './patterns/builder';
+import { Rect} from './patterns/prototype';
+import { Application } from './patterns/decorator';
 import {
   RoundHole,
   RoundPeg,
   SquarePegAdapter,
   SquarePeg,
-} from './adapter';
+} from './patterns/adapter';
 import {
   ImageEditor,
   Circle,
   Dot,
-} from './composite';
+} from './patterns/composite';
 import {
   Tv,
   Remote,
-} from './bridge';
-import { Editor } from './memento';
-import { App } from './command';
-
+} from './patterns/bridge';
+import { Editor } from './patterns/memento';
+import { App } from './patterns/command';
 
 // GENERATING PATTERNS
 

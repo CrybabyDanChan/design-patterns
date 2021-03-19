@@ -28,7 +28,7 @@ class Rect extends Shape {
     this.height = source.height;
   }
 
-  clone() {
+  clone(): Rect {
     return new Rect(this);
   }
 }
