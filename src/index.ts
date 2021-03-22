@@ -21,6 +21,7 @@ import {
 import { Editor } from './patterns/behavior/memento';
 // import { App } from './patterns/behavior/command';
 import {Master, Paypal, Qiwi} from './patterns/behavior/CoR';
+import {Driver, Engine, OnStartCommand} from './patterns/behavior/command';
 
 // GENERATING PATTERNS
 
@@ -85,10 +86,12 @@ editor.text = 'goodbye';
 snapshot.restore();
 
 // Command
-// const application = new App();
-// const button = document.createElement('button');
-//
-// application.createUI([{ name: 'put', node: button}]);
+const engine = new Engine();
+const onStart = new OnStartCommand(engine);
+const driver = new Driver(onStart);
+
+driver.execute();
+console.log(engine);
 
 // CoR
 const qiwi = new Qiwi(123);
@@ -99,3 +102,4 @@ master.setNext(paypal);
 paypal.setNext(qiwi);
 
 master.pay(200);
+
