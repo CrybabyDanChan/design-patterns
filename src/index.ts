@@ -1,25 +1,26 @@
-import { AutoFactory } from "./patterns/factory";
-import { Counter } from './patterns/singleton';
-import { AutoBuilder, Director } from './patterns/builder';
-import { Rect} from './patterns/prototype';
-import { Application } from './patterns/decorator';
+import { AutoFactory } from './patterns/generating/factory';
+import { Counter } from './patterns/generating/singleton';
+import { AutoBuilder, Director } from './patterns/generating/builder';
+import { Rect} from './patterns/generating/prototype';
+import { Application } from './patterns/structural/decorator';
 import {
   RoundHole,
   RoundPeg,
   SquarePegAdapter,
   SquarePeg,
-} from './patterns/adapter';
+} from './patterns/structural/adapter';
 import {
   ImageEditor,
   Circle,
   Dot,
-} from './patterns/composite';
+} from './patterns/structural/composite';
 import {
   Tv,
   Remote,
-} from './patterns/bridge';
-import { Editor } from './patterns/memento';
-import { App } from './patterns/command';
+} from './patterns/structural/bridge';
+import { Editor } from './patterns/behavior/memento';
+// import { App } from './patterns/behavior/command';
+import {Master, Paypal, Qiwi} from './patterns/behavior/CoR';
 
 // GENERATING PATTERNS
 
@@ -84,8 +85,17 @@ editor.text = 'goodbye';
 snapshot.restore();
 
 // Command
-const application = new App();
-const button = document.createElement('button');
+// const application = new App();
+// const button = document.createElement('button');
+//
+// application.createUI([{ name: 'put', node: button}]);
 
-application.createUI([{ name: 'put', node: button}]);
+// CoR
+const qiwi = new Qiwi(123);
+const paypal = new Paypal(200);
+const master = new Master(100);
 
+master.setNext(paypal);
+paypal.setNext(qiwi);
+
+master.pay(200);
